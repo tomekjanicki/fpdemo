@@ -1,7 +1,7 @@
-﻿using System.Web.Http;
-
-namespace Demo.Api
+﻿namespace Demo.Api
 {
+    using System.Web.Http;
+
     public static class WebApiConfig
     {
         public static void Register(HttpConfiguration config)

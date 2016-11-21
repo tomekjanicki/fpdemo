@@ -1,8 +1,8 @@
-﻿using System.Web.Http;
-using Owin;
-
-namespace Demo.Api
+﻿namespace Demo.Api
 {
+    using System.Web.Http;
+    using Owin;
+
     public class Startup
     {
         public void Configuration(IAppBuilder appBuilder)
@@ -11,6 +11,5 @@ namespace Demo.Api
             WebApiConfig.Register(httpConfiguration);
             appBuilder.UseWebApi(httpConfiguration);
         }
-
     }
 }
