@@ -12,7 +12,7 @@
     using SimpleInjector;
     using SimpleInjector.Integration.WebApi;
 
-    public class RegisterContainer
+    public static class RegisterContainer
     {
         public static void Execute(HttpConfiguration configuration)
         {

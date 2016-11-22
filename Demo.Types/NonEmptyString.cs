@@ -23,7 +23,6 @@
 
         public static IResult<NonEmptyString, NonEmptyString> Create(string value, NonEmptyString field)
         {
-            // todo add unit tests
             return value == string.Empty ? GetFailResult((NonEmptyString)"{0} can't be empty", field) : GetOkResult(new NonEmptyString(value));
         }
 

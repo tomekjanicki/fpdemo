@@ -3,7 +3,7 @@
     using System.Web.Http;
     using Owin;
 
-    public class Startup
+    public sealed class Startup
     {
         public void Configuration(IAppBuilder appBuilder)
         {
