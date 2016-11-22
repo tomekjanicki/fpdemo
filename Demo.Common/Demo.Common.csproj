@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{B3BD92FD-3BF6-41C2-8E41-52BA05F478D9}</ProjectGuid>
+    <ProjectGuid>{2BAD0D81-4CF2-4AD1-A444-866387B6ECA7}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Demo.Types</RootNamespace>
-    <AssemblyName>Demo.Types</AssemblyName>
+    <RootNamespace>Demo.Common</RootNamespace>
+    <AssemblyName>Demo.Common</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <NuGetPackageImportStamp>
@@ -50,14 +50,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FunctionalExtensions\IResult.cs" />
-    <Compile Include="FunctionalExtensions\Maybe.cs" />
-    <Compile Include="FunctionalExtensions\Result.cs" />
-    <Compile Include="FunctionalExtensions\ResultCommonLogic.cs" />
-    <Compile Include="FunctionalExtensions\ResultExtensions.cs" />
-    <Compile Include="FunctionalExtensions\ValueObject.cs" />
-    <Compile Include="NonEmptyString.cs" />
-    <Compile Include="PositiveInt.cs" />
+    <Compile Include="Handlers\Interfaces\IMediator.cs" />
+    <Compile Include="Handlers\Interfaces\IRequest.cs" />
+    <Compile Include="Handlers\Interfaces\IRequestHandler.cs" />
+    <Compile Include="Handlers\Interfaces\IVoidRequestHandler.cs" />
+    <Compile Include="Handlers\Internal\AbstractRequestHandlerWrapper.cs" />
+    <Compile Include="Handlers\Internal\AbstractVoidRequestHandlerWrapper.cs" />
+    <Compile Include="Handlers\Internal\RequestHandlerWrapper.cs" />
+    <Compile Include="Handlers\Internal\VoidRequestHandlerWrapper.cs" />
+    <Compile Include="Handlers\Mediator.cs" />
+    <Compile Include="Handlers\SingleInstanceFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -70,6 +72,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="FodyWeavers.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Demo.Types\Demo.Types.csproj">
+      <Project>{B3BD92FD-3BF6-41C2-8E41-52BA05F478D9}</Project>
+      <Name>Demo.Types</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Fody.1.29.4\build\dotnet\Fody.targets" Condition="Exists('..\packages\Fody.1.29.4\build\dotnet\Fody.targets')" />
