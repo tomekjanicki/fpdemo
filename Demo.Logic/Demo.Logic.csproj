@@ -60,7 +60,13 @@
     <Compile Include="CQ\GetProductById\Query.cs" />
     <Compile Include="CQ\GetProductById\QueryHandler.cs" />
     <Compile Include="CQ\GetProductById\Repository.cs" />
+    <Compile Include="CQ\UpdateProduct\Command.cs" />
+    <Compile Include="CQ\UpdateProduct\CommandHandler.cs" />
+    <Compile Include="CQ\UpdateProduct\Interfaces\IRepository.cs" />
+    <Compile Include="CQ\UpdateProduct\Repository.cs" />
+    <Compile Include="CQ\ValueObjects\Name.cs" />
     <Compile Include="Facades\Apis\ProductGetFacade.cs" />
+    <Compile Include="Facades\Apis\ProductPutFacade.cs" />
     <Compile Include="Facades\Base\Helper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Shared\Error.cs" />
@@ -78,9 +84,7 @@
   <ItemGroup>
     <Content Include="FodyWeavers.xml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="CQ\UpdateProduct\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\Demo.Common\Demo.Common.csproj">
       <Project>{2BAD0D81-4CF2-4AD1-A444-866387B6ECA7}</Project>

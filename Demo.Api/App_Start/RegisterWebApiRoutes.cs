@@ -2,9 +2,9 @@
 {
     using System.Web.Http;
 
-    public static class WebApiConfig
+    public static class RegisterWebApiRoutes
     {
-        public static void Register(HttpConfiguration config)
+        public static void Execute(HttpConfiguration config)
         {
             config.MapHttpAttributeRoutes();
 

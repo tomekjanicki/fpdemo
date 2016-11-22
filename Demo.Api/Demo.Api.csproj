@@ -120,7 +120,7 @@
   <ItemGroup>
     <Compile Include="Apis\ProductController.cs" />
     <Compile Include="App_Start\RegisterContainer.cs" />
-    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="App_Start\RegisterWebApiRoutes.cs" />
     <Compile Include="Infrastructure\BaseWebApiController.cs" />
     <Compile Include="Infrastructure\WebApiControllerHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

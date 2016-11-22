@@ -45,7 +45,9 @@
             container.Register(typeof(IRequestHandler<,>), assemblies, lifeStyle);
             container.Register(typeof(IVoidRequestHandler<>), assemblies, lifeStyle);
             container.Register<ProductGetFacade>(lifeStyle);
+            container.Register<ProductPutFacade>(lifeStyle);
             container.Register<Logic.CQ.GetProductById.Interfaces.IRepository, Logic.CQ.GetProductById.Repository>(lifeStyle);
+            container.Register<Logic.CQ.UpdateProduct.Interfaces.IRepository, Logic.CQ.UpdateProduct.Repository>(lifeStyle);
         }
 
         private static IEnumerable<Assembly> GetAssemblies()

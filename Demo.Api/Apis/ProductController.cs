@@ -7,10 +7,12 @@
     public sealed class ProductController : BaseWebApiController
     {
         private readonly ProductGetFacade _productGetFacade;
+        private readonly ProductPutFacade _productPutFacade;
 
-        public ProductController(ProductGetFacade productGetFacade)
+        public ProductController(ProductGetFacade productGetFacade, ProductPutFacade productPutFacade)
         {
             _productGetFacade = productGetFacade;
+            _productPutFacade = productPutFacade;
         }
 
         public IHttpActionResult Get(int id)
@@ -18,6 +20,13 @@
             var result = _productGetFacade.Get(id);
 
             return GetHttpActionResult(result);
+        }
+
+        public IHttpActionResult Put(int id, Dtos.Apis.Product.Put.Product product)
+        {
+            var result = _productPutFacade.Put(id, product);
+
+            return GetHttpActionResultForPut(result);
         }
     }
 }
