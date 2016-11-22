@@ -18,6 +18,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo.Common", "Demo.Common\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo.Dtos", "Demo.Dtos\Demo.Dtos.csproj", "{EE7282E6-C57D-45C9-8855-23E055C5130E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo.Common.Api", "Demo.Common.Api\Demo.Common.Api.csproj", "{D49321A6-12EC-4B32-8B8B-3E17CD800BB4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -44,6 +46,10 @@ Global
 		{EE7282E6-C57D-45C9-8855-23E055C5130E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EE7282E6-C57D-45C9-8855-23E055C5130E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EE7282E6-C57D-45C9-8855-23E055C5130E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D49321A6-12EC-4B32-8B8B-3E17CD800BB4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D49321A6-12EC-4B32-8B8B-3E17CD800BB4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D49321A6-12EC-4B32-8B8B-3E17CD800BB4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D49321A6-12EC-4B32-8B8B-3E17CD800BB4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
