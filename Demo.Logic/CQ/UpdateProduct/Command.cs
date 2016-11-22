@@ -1,8 +1,8 @@
 ﻿namespace Demo.Logic.CQ.UpdateProduct
 {
     using Demo.Common.Handlers.Interfaces;
+    using Demo.Common.Shared;
     using Demo.Logic.CQ.ValueObjects;
-    using Demo.Logic.Shared;
     using Demo.Types;
     using Demo.Types.FunctionalExtensions;
 

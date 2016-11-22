@@ -1,4 +1,4 @@
-﻿namespace Demo.Logic.Shared
+﻿namespace Demo.Common.Shared
 {
     using System;
     using Demo.Types;

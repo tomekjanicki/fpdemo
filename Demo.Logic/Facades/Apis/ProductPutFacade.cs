@@ -1,10 +1,10 @@
 ﻿namespace Demo.Logic.Facades.Apis
 {
     using Demo.Common.Handlers.Interfaces;
+    using Demo.Common.Shared;
     using Demo.Dtos.Apis.Product.Put;
     using Demo.Logic.CQ.UpdateProduct;
     using Demo.Logic.Facades.Base;
-    using Demo.Logic.Shared;
     using Demo.Types;
     using Demo.Types.FunctionalExtensions;
 

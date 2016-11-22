@@ -127,8 +127,6 @@
     <Compile Include="App_Start\RegisterSwagger.cs" />
     <Compile Include="App_Start\RegisterWebApiMiscs.cs" />
     <Compile Include="App_Start\RegisterWebApiRoutes.cs" />
-    <Compile Include="Infrastructure\BaseWebApiController.cs" />
-    <Compile Include="Infrastructure\WebApiControllerHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -143,6 +141,10 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Demo.Common.Api\Demo.Common.Api.csproj">
+      <Project>{d49321a6-12ec-4b32-8b8b-3e17cd800bb4}</Project>
+      <Name>Demo.Common.Api</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Demo.Common\Demo.Common.csproj">
       <Project>{2BAD0D81-4CF2-4AD1-A444-866387B6ECA7}</Project>
       <Name>Demo.Common</Name>

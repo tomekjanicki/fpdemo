@@ -1,7 +1,7 @@
-﻿namespace Demo.Api.Infrastructure
+﻿namespace Demo.Common.Api.Infrastructure
 {
     using System.Web.Http;
-    using Demo.Logic.Shared;
+    using Demo.Common.Shared;
     using Demo.Types.FunctionalExtensions;
 
     public abstract class BaseWebApiController : ApiController

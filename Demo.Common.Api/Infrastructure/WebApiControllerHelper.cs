@@ -1,10 +1,10 @@
-﻿namespace Demo.Api.Infrastructure
+﻿namespace Demo.Common.Api.Infrastructure
 {
     using System;
     using System.Net;
     using System.Web.Http;
     using System.Web.Http.Results;
-    using Demo.Logic.Shared;
+    using Demo.Common.Shared;
     using Demo.Types.FunctionalExtensions;
 
     public static class WebApiControllerHelper

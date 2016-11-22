@@ -1,4 +1,4 @@
-﻿namespace Demo.Logic.Shared
+﻿namespace Demo.Common.Shared
 {
     public enum ErrorType
     {

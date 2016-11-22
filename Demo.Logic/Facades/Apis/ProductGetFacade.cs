@@ -2,9 +2,9 @@
 {
     using AutoMapper;
     using Demo.Common.Handlers.Interfaces;
+    using Demo.Common.Shared;
     using Demo.Logic.CQ.GetProductById;
     using Demo.Logic.Facades.Base;
-    using Demo.Logic.Shared;
     using Demo.Types.FunctionalExtensions;
 
     public sealed class ProductGetFacade

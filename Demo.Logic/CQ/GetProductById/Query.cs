@@ -1,7 +1,7 @@
 ﻿namespace Demo.Logic.CQ.GetProductById
 {
     using Demo.Common.Handlers.Interfaces;
-    using Demo.Logic.Shared;
+    using Demo.Common.Shared;
     using Demo.Types;
     using Demo.Types.FunctionalExtensions;
 

@@ -69,9 +69,6 @@
     <Compile Include="Facades\Apis\ProductPutFacade.cs" />
     <Compile Include="Facades\Base\Helper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Shared\Error.cs" />
-    <Compile Include="Shared\ErrorResultExtensions.cs" />
-    <Compile Include="Shared\ErrorType.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

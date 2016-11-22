@@ -2,7 +2,7 @@
 {
     using System.Net;
     using System.Web.Http;
-    using Demo.Api.Infrastructure;
+    using Demo.Common.Api.Infrastructure;
     using Demo.Logic.Facades.Apis;
     using Swashbuckle.Swagger.Annotations;
 

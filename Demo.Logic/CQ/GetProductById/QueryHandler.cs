@@ -1,8 +1,8 @@
 ﻿namespace Demo.Logic.CQ.GetProductById
 {
     using Demo.Common.Handlers.Interfaces;
+    using Demo.Common.Shared;
     using Demo.Logic.CQ.GetProductById.Interfaces;
-    using Demo.Logic.Shared;
     using Demo.Types.FunctionalExtensions;
 
     public sealed class QueryHandler : IRequestHandler<Query, IResult<Product, Error>>
