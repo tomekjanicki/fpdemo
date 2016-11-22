@@ -8,7 +8,7 @@
     {
         public Maybe<Product> GetProductById(PositiveInt id)
         {
-            return id < 10 ? new Product(id, (NonEmptyString)"code", (NonEmptyString)"name") : null;
+            return id < 10 ? new Product(id, (NonEmptyString)"code", (NonEmptyString)"name", (PositiveInt)5) : null;
         }
     }
 }

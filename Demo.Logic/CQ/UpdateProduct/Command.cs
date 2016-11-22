@@ -8,28 +8,33 @@
 
     public sealed class Command : ValueObject<Command>, IRequest<IResult<Error>>
     {
-        private Command(PositiveInt id, Name name)
+        private Command(PositiveInt id, Name name, PositiveInt size)
         {
             Id = id;
             Name = name;
+            Size = size;
         }
 
         public PositiveInt Id { get; }
 
         public Name Name { get; }
 
-        public static IResult<Command, NonEmptyString> Create(int id, string name)
+        public PositiveInt Size { get; }
+
+        public static IResult<Command, NonEmptyString> Create(int id, string name, int? size)
         {
             var idResult = PositiveInt.Create(id, (NonEmptyString)nameof(Id));
             var nameResult = Name.Create(name, (NonEmptyString)nameof(Name));
+            var sizeResult = PositiveInt.Create(size, (NonEmptyString)nameof(Size));
 
             var result = new IResult<NonEmptyString>[]
             {
                 idResult,
-                nameResult
+                nameResult,
+                sizeResult
             }.IfAtLeastOneFailCombineElseReturnOk();
 
-            return result.IsFailure ? GetFailResult(result.Error) : GetOkResult(new Command(idResult.Value, nameResult.Value));
+            return result.IsFailure ? GetFailResult(result.Error) : GetOkResult(new Command(idResult.Value, nameResult.Value, sizeResult.Value));
         }
 
         protected override bool EqualsCore(Command other)
