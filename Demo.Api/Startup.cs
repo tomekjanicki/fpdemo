@@ -9,7 +9,9 @@
         {
             var httpConfiguration = new HttpConfiguration();
             RegisterContainer.Execute(httpConfiguration);
+            RegisterSwagger.Execute(httpConfiguration);
             RegisterWebApiRoutes.Execute(httpConfiguration);
+            RegisterWebApiMiscs.Execute(httpConfiguration);
             appBuilder.UseWebApi(httpConfiguration);
         }
     }
