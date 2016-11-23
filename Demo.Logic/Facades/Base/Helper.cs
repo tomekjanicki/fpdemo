@@ -9,23 +9,9 @@
     public static class Helper
     {
         public static IResult<TDto, Error> GetItem<TDto, TQuery, TObject>(IMediator mediator, IMapper mapper, IResult<TQuery, NonEmptyString> queryResult)
-            where TQuery : IRequest<IResult<TObject, Error>>
+            where TQuery : class, IRequest<IResult<TObject, Error>>
         {
-            if (queryResult.IsFailure)
-            {
-                return queryResult.Error.ToGeneric<TDto>();
-            }
-
-            var result = mediator.Send(queryResult.Value);
-
-            if (result.IsFailure)
-            {
-                return Result<TDto, Error>.Fail(result.Error);
-            }
-
-            var data = mapper.Map<TDto>(result.Value);
-
-            return Result<TDto, Error>.Ok(data);
+            return ErrorResultExtensions.OnSuccess(queryResult, mediator.Send, Error.CreateGeneric).OnSuccess(dto => GetMappedResult<TDto, TObject>(dto, mapper));
         }
 
         public static IResult<TDto, Error> GetItemSimple<TDto, TQuery, TObject>(IMediator mediator, IMapper mapper, IResult<TQuery, NonEmptyString> queryResult)
@@ -37,29 +23,13 @@
         public static IResult<TDto, Error> GetItems<TDto, TQuery, TObject>(IMediator mediator, IMapper mapper, IResult<TQuery, NonEmptyString> queryResult)
             where TQuery : IRequest<TObject>
         {
-            if (queryResult.IsFailure)
-            {
-                return queryResult.Error.ToGeneric<TDto>();
-            }
-
-            var result = mediator.Send(queryResult.Value);
-
-            var data = mapper.Map<TDto>(result);
-
-            return Result<TDto, Error>.Ok(data);
+            return queryResult.OnSuccess(query => GetMappedResult<TDto, TObject>(mediator.Send(query), mapper), Error.CreateGeneric);
         }
 
         public static IResult<Error> Delete<TCommand>(IMediator mediator, IResult<TCommand, NonEmptyString> commandResult)
             where TCommand : IRequest<IResult<Error>>
         {
-            if (commandResult.IsFailure)
-            {
-                return commandResult.Error.ToGeneric();
-            }
-
-            var result = mediator.Send(commandResult.Value);
-
-            return result;
+            return commandResult.OnSuccess(command => mediator.Send(command), Error.CreateGeneric);
         }
 
         public static IResult<Error> Put<TCommand>(IMediator mediator, IResult<TCommand, NonEmptyString> commandResult)
@@ -69,9 +39,14 @@
         }
 
         public static IResult<TDto, Error> Post<TDto, TCommand, TObject>(IMediator mediator, IMapper mapper, IResult<TCommand, NonEmptyString> commandResult)
-            where TCommand : IRequest<IResult<TObject, Error>>
+            where TCommand : class, IRequest<IResult<TObject, Error>>
         {
             return GetItem<TDto, TCommand, TObject>(mediator, mapper, commandResult);
+        }
+
+        private static IResult<TDto, Error> GetMappedResult<TDto, TObject>(TObject obj, IMapper mapper)
+        {
+            return Result<TDto, Error>.Ok(mapper.Map<TDto>(obj));
         }
     }
 }

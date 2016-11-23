@@ -17,7 +17,7 @@
         public static IResult<Query, NonEmptyString> Create(int id)
         {
             var result = PositiveInt.Create(id, (NonEmptyString)nameof(Id));
-            return result.IsFailure ? GetFailResult(result.Error) : GetOkResult(new Query(result.Value));
+            return result.OnSuccess(positiveIntId => GetOkResult(new Query(positiveIntId)));
         }
 
         protected override bool EqualsCore(Query other)

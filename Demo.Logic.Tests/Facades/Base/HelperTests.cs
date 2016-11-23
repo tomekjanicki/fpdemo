@@ -119,5 +119,21 @@
 
             result.Error.Message.ShouldBe(value);
         }
+
+        [Test]
+        public void GetItem_MediatorResultFail_ShouldFail()
+        {
+            const string error = "error";
+
+            _mediator.Send(Arg.Any<IRequest<IResult<NonEmptyString, Error>>>()).Returns(((NonEmptyString)error).ToGeneric<NonEmptyString>());
+
+            var result = Helper.GetItem<string, IRequest<IResult<NonEmptyString, Error>>, NonEmptyString>(_mediator, _mapper, _getItemQueryResult);
+
+            result.IsFailure.ShouldBeTrue();
+
+            result.Error.ErrorType.ShouldBe(ErrorType.Generic);
+
+            result.Error.Message.ShouldBe(error);
+        }
     }
 }

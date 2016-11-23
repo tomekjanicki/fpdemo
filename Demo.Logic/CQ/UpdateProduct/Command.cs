@@ -34,7 +34,7 @@
                 sizeResult
             }.IfAtLeastOneFailCombineElseReturnOk();
 
-            return result.IsFailure ? GetFailResult(result.Error) : GetOkResult(new Command(idResult.Value, nameResult.Value, sizeResult.Value));
+            return result.OnSuccess(() => GetOkResult(new Command(idResult.Value, nameResult.Value, sizeResult.Value)));
         }
 
         protected override bool EqualsCore(Command other)

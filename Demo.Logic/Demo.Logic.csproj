@@ -64,6 +64,8 @@
     <Compile Include="CQ\UpdateProduct\CommandHandler.cs" />
     <Compile Include="CQ\UpdateProduct\Interfaces\IRepository.cs" />
     <Compile Include="CQ\UpdateProduct\Repository.cs" />
+    <Compile Include="CQ\UpdateSubproducts\Command.cs" />
+    <Compile Include="CQ\UpdateSubproducts\CommandHandler.cs" />
     <Compile Include="CQ\ValueObjects\Name.cs" />
     <Compile Include="Facades\Apis\ProductGetFacade.cs" />
     <Compile Include="Facades\Apis\ProductPutFacade.cs" />

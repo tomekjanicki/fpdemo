@@ -3,7 +3,6 @@
     using System;
     using Demo.Common.Handlers.Interfaces;
     using Demo.Common.Handlers.Internal;
-    using Demo.Types.FunctionalExtensions;
 
     public sealed class Mediator : IMediator
     {
@@ -28,11 +27,6 @@
             var defaultHandler = GetHandler(request);
 
             defaultHandler.Handle(request);
-        }
-
-        private static InvalidOperationException BuildException(Exception inner)
-        {
-            return new InvalidOperationException("Container or service locator not configured properly or handlers not registered with your container.", inner);
         }
 
         private static InvalidOperationException BuildException(object message, Exception inner)
@@ -66,14 +60,14 @@
             return GetWrapperInstance<TWrapper>(request, genericHandlerType, genericWrapperType);
         }
 
-        private TWrapper GetWrapperInstance<TWrapper>(Maybe<object> request, Type genericHandlerType, Type genericWrapperType)
+        private TWrapper GetWrapperInstance<TWrapper>(object request, Type genericHandlerType, Type genericWrapperType)
         {
             var handler = GetHandler(request, genericHandlerType);
 
             return (TWrapper)Activator.CreateInstance(genericWrapperType, handler);
         }
 
-        private object GetHandler(Maybe<object> request, Type handlerType)
+        private object GetHandler(object request, Type handlerType)
         {
             try
             {
@@ -81,7 +75,7 @@
             }
             catch (Exception e)
             {
-                throw request.HasValue ? BuildException(request, e) : BuildException(e);
+                throw BuildException(request, e);
             }
         }
     }
