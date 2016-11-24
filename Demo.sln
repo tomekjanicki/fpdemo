@@ -12,6 +12,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "root", "root", "{9AAE3E95-5CD8-4DBF-85C5-757CE95554D2}"
 	ProjectSection(SolutionItems) = preProject
 		Demo.ruleset = Demo.ruleset
+		Presentation.pptx = Presentation.pptx
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo.Common", "Demo.Common\Demo.Common.csproj", "{2BAD0D81-4CF2-4AD1-A444-866387B6ECA7}"
