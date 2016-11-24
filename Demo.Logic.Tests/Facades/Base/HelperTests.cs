@@ -57,6 +57,22 @@
         }
 
         [Test]
+        public void Delete_MediatorResultFail_ShouldFail()
+        {
+            var error = (NonEmptyString)"error";
+
+            _mediator.Send(Arg.Any<IRequest<IResult<Error>>>()).Returns(error.ToGeneric());
+
+            var result = Helper.Delete(_mediator, _deleteCommandResult);
+
+            result.IsFailure.ShouldBeTrue();
+
+            result.Error.ErrorType.ShouldBe(ErrorType.Generic);
+
+            result.Error.Message.ShouldBe(error);
+        }
+
+        [Test]
         public void GetItems_NoErrors_ShouldSucceed()
         {
             const string value = "value";

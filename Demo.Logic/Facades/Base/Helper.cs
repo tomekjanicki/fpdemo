@@ -11,7 +11,9 @@
         public static IResult<TDto, Error> GetItem<TDto, TQuery, TObject>(IMediator mediator, IMapper mapper, IResult<TQuery, NonEmptyString> queryResult)
             where TQuery : class, IRequest<IResult<TObject, Error>>
         {
-            return ErrorResultExtensions.OnSuccess(queryResult, mediator.Send, Error.CreateGeneric).OnSuccess(dto => GetMappedResult<TDto, TObject>(dto, mapper));
+            return ErrorResultExtensions.
+                OnSuccess(queryResult, mediator.Send, Error.CreateGeneric).
+                OnSuccess(dto => GetMappedResult<TDto, TObject>(dto, mapper));
         }
 
         public static IResult<TDto, Error> GetItemSimple<TDto, TQuery, TObject>(IMediator mediator, IMapper mapper, IResult<TQuery, NonEmptyString> queryResult)
@@ -23,13 +25,15 @@
         public static IResult<TDto, Error> GetItems<TDto, TQuery, TObject>(IMediator mediator, IMapper mapper, IResult<TQuery, NonEmptyString> queryResult)
             where TQuery : IRequest<TObject>
         {
-            return queryResult.OnSuccess(query => GetMappedResult<TDto, TObject>(mediator.Send(query), mapper), Error.CreateGeneric);
+            return queryResult.
+                OnSuccess(query => GetMappedResult<TDto, TObject>(mediator.Send(query), mapper), Error.CreateGeneric);
         }
 
         public static IResult<Error> Delete<TCommand>(IMediator mediator, IResult<TCommand, NonEmptyString> commandResult)
             where TCommand : IRequest<IResult<Error>>
         {
-            return commandResult.OnSuccess(command => mediator.Send(command), Error.CreateGeneric);
+            return commandResult.
+                OnSuccess(command => mediator.Send(command), Error.CreateGeneric);
         }
 
         public static IResult<Error> Put<TCommand>(IMediator mediator, IResult<TCommand, NonEmptyString> commandResult)

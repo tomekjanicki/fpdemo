@@ -63,7 +63,7 @@
                 subProductIdList.Add(subProductIdResult.Value);
             }
 
-            return subProductIdList.GetOkMessage();
+            return subProductIdList.Distinct().ToList().GetOkMessage();
         }
     }
 }
