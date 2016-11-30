@@ -36,7 +36,7 @@
 
         protected override bool EqualsCore(Command other)
         {
-            return Id == other.Id && SubProductIds.Equals(other.SubProductIds);
+            return Id == other.Id && SubProductIds.SequenceEqual(other.SubProductIds);
         }
 
         protected override int GetHashCodeCore()
