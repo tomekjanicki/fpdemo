@@ -3,21 +3,13 @@
     using System;
     using NullGuard;
 
-    public struct Result<TError> : IResult<TError>
+    public sealed class Result<TError> : BaseResult<bool, TError>
         where TError : class
     {
-        private readonly ResultCommonLogic<TError> _logic;
-
         private Result(Maybe<TError> error)
+            : base(true, error, false)
         {
-            _logic = new ResultCommonLogic<TError>(error);
         }
-
-        public bool IsFailure => _logic.IsFailure;
-
-        public bool IsSuccess => _logic.IsSuccess;
-
-        public TError Error => _logic.Error;
 
         public static Result<TError> Ok()
         {
@@ -30,23 +22,13 @@
         }
     }
 
-    public struct Result<TResult, TError> : IResult<TResult, TError>
+    public sealed class Result<TResult, TError> : BaseResult<TResult, TError>, IResult<TResult, TError>
         where TError : class
     {
-        private readonly ResultCommonLogic<TError> _logic;
-        private readonly TResult _value;
-
         private Result([AllowNull]TResult value, Maybe<TError> error)
+            : base(value, error, true)
         {
-            _logic = new ResultCommonLogic<TError>(error);
-            _value = value;
         }
-
-        public bool IsFailure => _logic.IsFailure;
-
-        public bool IsSuccess => _logic.IsSuccess;
-
-        public TError Error => _logic.Error;
 
         public TResult Value
         {
@@ -57,7 +39,7 @@
                     throw new InvalidOperationException("There is no value for failure.");
                 }
 
-                return _value;
+                return Val;
             }
         }
 

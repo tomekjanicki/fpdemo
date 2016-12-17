@@ -8,16 +8,6 @@
 
     public static class Helper
     {
-        // public static IResult<TDto, Error> GetItem<TDto, TQuery, TObject>(IMediator mediator, IMapper mapper, IResult<TQuery, NonEmptyString> queryResult)
-        //    where TQuery : IRequest<IResult<TObject, Error>>
-        // {
-        //    if (queryResult.IsFailure)
-        //    {
-        //        return queryResult.Error.ToGeneric<TDto>();
-        //    }
-        //    var result = mediator.Send(queryResult.Value);
-        //    return result.IsFailure ? Result<TDto, Error>.Fail(result.Error) : GetMappedResult<TDto, TObject>(result.Value, mapper);
-        // }
         public static IResult<TDto, Error> GetItem<TDto, TQuery, TObject>(IMediator mediator, IMapper mapper, IResult<TQuery, NonEmptyString> queryResult)
             where TQuery : class, IRequest<IResult<TObject, Error>>
         {

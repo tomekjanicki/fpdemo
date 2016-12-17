@@ -1,0 +1,1 @@
+﻿[assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("StyleCop.CSharp.MaintainabilityRules", "SA1402:File may only contain a single class", Justification = "+", Scope = "type", Target = "~T:Demo.Types.FunctionalExtensions.Result`2")]

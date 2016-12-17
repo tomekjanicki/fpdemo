@@ -53,9 +53,12 @@
     <Compile Include="FunctionalExtensions\IResult.cs" />
     <Compile Include="FunctionalExtensions\Maybe.cs" />
     <Compile Include="FunctionalExtensions\Result.cs" />
-    <Compile Include="FunctionalExtensions\ResultCommonLogic.cs" />
+    <Compile Include="FunctionalExtensions\BaseResult.cs" />
     <Compile Include="FunctionalExtensions\ResultExtensions.cs" />
+    <Compile Include="FunctionalExtensions\SimpleClassValueObject.cs" />
+    <Compile Include="FunctionalExtensions\SimpleStructValueObject.cs" />
     <Compile Include="FunctionalExtensions\ValueObject.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="NonEmptyString.cs" />
     <Compile Include="PositiveInt.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

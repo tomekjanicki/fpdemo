@@ -2,18 +2,16 @@
 {
     using Demo.Types.FunctionalExtensions;
 
-    public sealed class NonEmptyString : ValueObject<NonEmptyString>
+    public sealed class NonEmptyString : SimpleClassValueObject<NonEmptyString, string>
     {
         private NonEmptyString(string value)
+            : base(value)
         {
-            Value = value;
         }
-
-        public string Value { get; }
 
         public static explicit operator NonEmptyString(string value)
         {
-            return GetValue(() => Create(value, new NonEmptyString("Value")));
+            return GetValueWhenSuccessOrThrowInvalidCastException(() => Create(value, new NonEmptyString("Value")));
         }
 
         public static implicit operator string(NonEmptyString value)
@@ -23,22 +21,7 @@
 
         public static IResult<NonEmptyString, NonEmptyString> Create(string value, NonEmptyString field)
         {
-            return value == string.Empty ? GetFailResult((NonEmptyString)"{0} can't be empty", field) : GetOkResult(new NonEmptyString(value));
-        }
-
-        public override string ToString()
-        {
-            return Value;
-        }
-
-        protected override bool EqualsCore(NonEmptyString other)
-        {
-            return Value == other.Value;
-        }
-
-        protected override int GetHashCodeCore()
-        {
-            return Value.GetHashCode();
+            return CreateInt(value, new NonEmptyString($"{field.Value} can't be empty"), s => s != string.Empty, s => new NonEmptyString(s));
         }
     }
 }

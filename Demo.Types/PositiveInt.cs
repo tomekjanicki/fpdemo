@@ -2,18 +2,16 @@
 {
     using Demo.Types.FunctionalExtensions;
 
-    public sealed class PositiveInt : ValueObject<PositiveInt>
+    public sealed class PositiveInt : SimpleStructValueObject<PositiveInt, int>
     {
         private PositiveInt(int value)
+            : base(value)
         {
-            Value = value;
         }
-
-        public int Value { get; }
 
         public static explicit operator PositiveInt(int value)
         {
-            return GetValue(() => Create(value, (NonEmptyString)"Value"));
+            return GetValueWhenSuccessOrThrowInvalidCastException(() => Create(value, (NonEmptyString)"Value"));
         }
 
         public static implicit operator int(PositiveInt value)
@@ -23,27 +21,12 @@
 
         public static IResult<PositiveInt, NonEmptyString> Create(int? value, NonEmptyString field)
         {
-            return value == null ? GetFailResult((NonEmptyString)"{0} can't be null", field) : Create(value.Value, field);
+            return CreateInt(value, field, v => Create(v, field));
         }
 
         public static IResult<PositiveInt, NonEmptyString> Create(int value, NonEmptyString field)
         {
-            return value <= 0 ? GetFailResult((NonEmptyString)"{0} can't be less or equal to zero", field) : GetOkResult(new PositiveInt(value));
-        }
-
-        public override string ToString()
-        {
-            return Value.ToString();
-        }
-
-        protected override bool EqualsCore(PositiveInt other)
-        {
-            return Value == other.Value;
-        }
-
-        protected override int GetHashCodeCore()
-        {
-            return Value.GetHashCode();
+            return CreateInt(value, (NonEmptyString)(field + " can't be less or equal to zero"), v => v > 0, v => new PositiveInt(v));
         }
     }
 }

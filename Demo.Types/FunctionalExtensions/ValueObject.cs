@@ -4,22 +4,22 @@
     using System.Collections.Generic;
     using System.Linq;
 
-    public abstract class ValueObject<T>
+    public abstract class ValueObject<T> : IEquatable<T>
         where T : ValueObject<T>
     {
         public static bool operator ==(ValueObject<T> a, ValueObject<T> b)
         {
-            if (ReferenceEquals(a, null) && ReferenceEquals(b, null))
-            {
-                return true;
-            }
-
-            return !ReferenceEquals(a, null) && !ReferenceEquals(b, null) && a.Equals(b);
+            return (ReferenceEquals(a, null) && ReferenceEquals(b, null)) || (!ReferenceEquals(a, null) && !ReferenceEquals(b, null) && a.Equals(b));
         }
 
         public static bool operator !=(ValueObject<T> a, ValueObject<T> b)
         {
             return !(a == b);
+        }
+
+        public bool Equals(T other)
+        {
+            return EqualsCore(other);
         }
 
         public override bool Equals(object obj)
@@ -34,10 +34,20 @@
             return GetHashCodeCore();
         }
 
-        protected static T GetValue(Func<IResult<T, NonEmptyString>> resultFunc)
+        protected static T GetValueWhenSuccessOrThrowInvalidCastException(Func<IResult<T, NonEmptyString>> resultFunc)
+        {
+            return GetValueWhenSuccessOrThrowInvalidCastException<T>(resultFunc);
+        }
+
+        protected static TReturnedResult GetValueWhenSuccessOrThrowInvalidCastException<TReturnedResult>(Func<IResult<TReturnedResult, NonEmptyString>> resultFunc)
         {
             var result = resultFunc();
-            result.EnsureIsNotFaliure();
+
+            if (result.IsFailure)
+            {
+                throw new InvalidCastException(result.Error);
+            }
+
             return result.Value;
         }
 
