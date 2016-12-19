@@ -5,6 +5,7 @@
     using System.Web.Http;
     using Newtonsoft.Json.Converters;
     using Newtonsoft.Json.Serialization;
+    using Thinktecture.IdentityModel.WebApi;
 
     public static class RegisterWebApiMiscs
     {
@@ -12,6 +13,7 @@
         {
             configuration.Formatters.Clear();
             configuration.Formatters.Add(GetConfiguredJsonMediaTypeFormatter());
+            configuration.Filters.Add(new ResourceActionAuthorizeAttribute());
         }
 
         private static JsonMediaTypeFormatter GetConfiguredJsonMediaTypeFormatter()

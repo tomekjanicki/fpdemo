@@ -12,6 +12,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "root", "root", "{9AAE3E95-5CD8-4DBF-85C5-757CE95554D2}"
 	ProjectSection(SolutionItems) = preProject
 		Demo.ruleset = Demo.ruleset
+		FiddlerTestRawRequests.txt = FiddlerTestRawRequests.txt
 		Presentation.pptx = Presentation.pptx
 	EndProjectSection
 EndProject

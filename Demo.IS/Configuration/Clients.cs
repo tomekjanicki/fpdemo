@@ -19,7 +19,7 @@
                         new Secret("secret".Sha256())
                     },
                     Flow = Flows.ResourceOwner,
-                    AllowedScopes = new List<string> { Constants.StandardScopes.OpenId },
+                    AllowedScopes = new List<string> { Constants.StandardScopes.OpenId, "write" },
                     Enabled = true
                 }
             };

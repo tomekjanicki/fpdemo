@@ -60,6 +60,8 @@
     <Compile Include="Handlers\Internal\VoidRequestHandlerWrapper.cs" />
     <Compile Include="Handlers\Mediator.cs" />
     <Compile Include="Handlers\SingleInstanceFactory.cs" />
+    <Compile Include="IoC\Interfaces\IIoCContainer.cs" />
+    <Compile Include="IoC\IoCContainerProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Shared\Error.cs" />
     <Compile Include="Shared\ErrorResultExtensions.cs" />

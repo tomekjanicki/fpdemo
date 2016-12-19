@@ -1,11 +1,14 @@
 ﻿namespace Demo.Common.Api.Infrastructure
 {
+    using System.Security.Claims;
     using System.Web.Http;
     using Demo.Common.Shared;
     using Demo.Types.FunctionalExtensions;
 
     public abstract class BaseWebApiController : ApiController
     {
+        public new ClaimsPrincipal User => base.User as ClaimsPrincipal;
+
         protected IHttpActionResult GetHttpActionResult<T>(IResult<T, Error> result)
         {
             return WebApiControllerHelper.GetHttpActionResult(result, this);

@@ -14,13 +14,9 @@
                 StandardScopes.OfflineAccess,
                 new Scope
                 {
-                    Name = "read",
-                    DisplayName = "Read data",
-                    Type = ScopeType.Resource,
-                    Emphasize = false,
-                    AllowUnrestrictedIntrospection = true,
-                    ScopeSecrets = new List<Secret> { new Secret("secret".Sha256()) }
-                },
+                    Name = "write",
+                    DisplayName = "Write user data"
+                }
             };
         }
     }

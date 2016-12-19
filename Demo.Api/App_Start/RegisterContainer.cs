@@ -5,8 +5,13 @@
     using System.Reflection;
     using System.Web.Http;
     using AutoMapper;
+    using Demo.Api.Infrastructure;
+    using Demo.Api.Infrastructure.Security;
+    using Demo.Common.Api.Infrastructure.Security;
+    using Demo.Common.Api.Infrastructure.Security.Interfaces;
     using Demo.Common.Handlers;
     using Demo.Common.Handlers.Interfaces;
+    using Demo.Common.IoC;
     using Demo.Logic;
     using Demo.Logic.Facades.Apis;
     using SimpleInjector;
@@ -29,12 +34,16 @@
             container.Verify();
 
             configuration.DependencyResolver = new SimpleInjectorWebApiDependencyResolver(container);
+
+            IoCContainerProvider.SetContainer(new IoCContainer(container));
         }
 
         private static void RegisterSingletons(Container container)
         {
             container.RegisterSingleton<IMediator, Mediator>();
             container.RegisterSingleton(new SingleInstanceFactory(container.GetInstance));
+            container.RegisterSingleton<IAccessConfigurationMapProvider, AccessConfigurationMapProvider>();
+            container.RegisterSingleton<IAccessResolver, AccessResolver>();
             container.RegisterSingleton(GetMapper);
         }
 

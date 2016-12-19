@@ -59,6 +59,7 @@
     <Compile Include="FunctionalExtensions\SimpleStructValueObject.cs" />
     <Compile Include="FunctionalExtensions\ValueObject.cs" />
     <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="NonEmptyLowerCaseString.cs" />
     <Compile Include="NonEmptyString.cs" />
     <Compile Include="PositiveInt.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
