@@ -15,7 +15,8 @@
                 new Scope
                 {
                     Name = "write",
-                    DisplayName = "Write user data"
+                    DisplayName = "Write user data",
+                    Type = ScopeType.Resource
                 }
             };
         }
