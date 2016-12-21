@@ -1,6 +1,7 @@
 namespace Demo.Common.Api.Infrastructure.Security
 {
     using System.Collections.Generic;
+    using System.Collections.Immutable;
     using System.Linq;
     using Demo.Types;
     using Demo.Types.FunctionalExtensions;
@@ -29,7 +30,7 @@ namespace Demo.Common.Api.Infrastructure.Security
 
         public static IResult<Scopes, NonEmptyString> CreateScopesOnly(IReadOnlyCollection<NonEmptyLowerCaseString> scopes)
         {
-            return scopes.Count == 0 ? GetFailResult((NonEmptyString)(nameof(ScopeCollection) + " cannot be empty list")) : GetOkResult(new Scopes(false, scopes.Distinct().OrderBy(s => s.Value).ToList()));
+            return scopes.Count == 0 ? GetFailResult((NonEmptyString)(nameof(ScopeCollection) + " cannot be empty list")) : GetOkResult(new Scopes(false, scopes.Distinct().OrderBy(s => s.Value).ToImmutableList()));
         }
 
         public bool ContainScopes(IEnumerable<NonEmptyLowerCaseString> scopes)
