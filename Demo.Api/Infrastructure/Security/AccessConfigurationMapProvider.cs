@@ -23,7 +23,7 @@ namespace Demo.Api.Infrastructure.Security
             }.ToImmutableDictionary();
         }
 
-        public IReadOnlyDictionary<NonEmptyLowerCaseString, Scopes> Get()
+        public ImmutableDictionary<NonEmptyLowerCaseString, Scopes> Get()
         {
             return Dictionary;
         }

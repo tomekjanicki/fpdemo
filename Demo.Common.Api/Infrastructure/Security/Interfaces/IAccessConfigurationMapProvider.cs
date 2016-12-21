@@ -1,10 +1,10 @@
 ﻿namespace Demo.Common.Api.Infrastructure.Security.Interfaces
 {
-    using System.Collections.Generic;
+    using System.Collections.Immutable;
     using Demo.Types;
 
     public interface IAccessConfigurationMapProvider
     {
-        IReadOnlyDictionary<NonEmptyLowerCaseString, Scopes> Get();
+        ImmutableDictionary<NonEmptyLowerCaseString, Scopes> Get();
     }
 }
