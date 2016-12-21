@@ -20,12 +20,12 @@ namespace Demo.Common.Api.Infrastructure.Security
 
         public static Scopes CreateAnonymous()
         {
-            return new Scopes(true, new List<NonEmptyLowerCaseString>());
+            return new Scopes(true, new List<NonEmptyLowerCaseString>().ToImmutableList());
         }
 
         public static Scopes CreateScopeOnly(NonEmptyLowerCaseString scope)
         {
-            return new Scopes(false, new List<NonEmptyLowerCaseString> { scope });
+            return new Scopes(false, new List<NonEmptyLowerCaseString> { scope }.ToImmutableList());
         }
 
         public static IResult<Scopes, NonEmptyString> CreateScopesOnly(IReadOnlyCollection<NonEmptyLowerCaseString> scopes)
@@ -33,7 +33,7 @@ namespace Demo.Common.Api.Infrastructure.Security
             return scopes.Count == 0 ? GetFailResult((NonEmptyString)(nameof(ScopeCollection) + " cannot be empty list")) : GetOkResult(new Scopes(false, scopes.Distinct().OrderBy(s => s.Value).ToImmutableList()));
         }
 
-        public bool ContainScopes(IEnumerable<NonEmptyLowerCaseString> scopes)
+        public bool ContainScopes(IReadOnlyCollection<NonEmptyLowerCaseString> scopes)
         {
             return scopes.Any(scope => ScopeCollection.Contains(scope));
         }
@@ -45,7 +45,7 @@ namespace Demo.Common.Api.Infrastructure.Security
 
         protected override int GetHashCodeCore()
         {
-            return GetCalculatedHashCode(new List<object> { Anonymous, ScopeCollection });
+            return GetCalculatedHashCode(new List<object> { Anonymous, ScopeCollection }.ToImmutableList());
         }
     }
 }

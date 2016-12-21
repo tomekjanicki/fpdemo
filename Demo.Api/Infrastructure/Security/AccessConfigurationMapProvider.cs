@@ -1,13 +1,14 @@
 namespace Demo.Api.Infrastructure.Security
 {
     using System.Collections.Generic;
+    using System.Collections.Immutable;
     using Demo.Common.Api.Infrastructure.Security;
     using Demo.Common.Api.Infrastructure.Security.Interfaces;
     using Demo.Types;
 
     public sealed class AccessConfigurationMapProvider : IAccessConfigurationMapProvider
     {
-        private static readonly Dictionary<NonEmptyLowerCaseString, Scopes> Dictionary;
+        private static readonly ImmutableDictionary<NonEmptyLowerCaseString, Scopes> Dictionary;
 
         static AccessConfigurationMapProvider()
         {
@@ -19,7 +20,7 @@ namespace Demo.Api.Infrastructure.Security
             {
                 { (NonEmptyLowerCaseString)"product/put", writeScopeOnly },
                 { (NonEmptyLowerCaseString)"version/get", anonymous }
-            };
+            }.ToImmutableDictionary();
         }
 
         public IReadOnlyDictionary<NonEmptyLowerCaseString, Scopes> Get()

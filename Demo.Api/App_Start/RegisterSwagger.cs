@@ -1,6 +1,7 @@
 ﻿namespace Demo.Api
 {
     using System.Collections.Generic;
+    using System.Collections.Immutable;
     using System.Linq;
     using System.Web.Http;
     using System.Web.Http.Description;
@@ -67,13 +68,13 @@
 
                     InitSecurityNodeIfNull(operation);
 
-                    operation.security.Add(GetOAuthRequirements(scopes.ScopeCollection.Select(s => s.Value)));
+                    operation.security.Add(GetOAuthRequirements(scopes.ScopeCollection.Select(s => s.Value).ToImmutableList()));
                 }
                 else
                 {
                     InitSecurityNodeIfNull(operation);
 
-                    operation.security.Add(GetOAuthRequirements(Enumerable.Empty<string>()));
+                    operation.security.Add(GetOAuthRequirements(Enumerable.Empty<string>().ToImmutableList()));
                 }
             }
 

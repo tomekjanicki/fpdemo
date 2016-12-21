@@ -70,7 +70,7 @@
 
         protected abstract int GetHashCodeCore();
 
-        protected int GetCalculatedHashCode(IEnumerable<object> list)
+        protected int GetCalculatedHashCode(IReadOnlyCollection<object> list)
         {
             return list.Aggregate(13, (current, i) => current * 7 + i.GetHashCode());
         }

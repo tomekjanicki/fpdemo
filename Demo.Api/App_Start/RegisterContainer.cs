@@ -1,7 +1,7 @@
 ﻿namespace Demo.Api
 {
     using System.Collections.Generic;
-    using System.Linq;
+    using System.Collections.Immutable;
     using System.Reflection;
     using System.Web.Http;
     using AutoMapper;
@@ -49,7 +49,7 @@
 
         private static void RegisterScoped(Container container)
         {
-            var assemblies = GetAssemblies().ToArray();
+            var assemblies = GetAssemblies();
             var lifeStyle = Lifestyle.Scoped;
             container.Register(typeof(IRequestHandler<,>), assemblies, lifeStyle);
             container.Register(typeof(IVoidRequestHandler<>), assemblies, lifeStyle);
@@ -59,9 +59,9 @@
             container.Register<Logic.CQ.UpdateProduct.Interfaces.IRepository, Logic.CQ.UpdateProduct.Repository>(lifeStyle);
         }
 
-        private static IEnumerable<Assembly> GetAssemblies()
+        private static IReadOnlyCollection<Assembly> GetAssemblies()
         {
-            yield return typeof(AutoMapperConfiguration).GetTypeInfo().Assembly;
+            return new List<Assembly> { typeof(AutoMapperConfiguration).GetTypeInfo().Assembly }.ToImmutableList();
         }
 
         private static IMapper GetMapper()
