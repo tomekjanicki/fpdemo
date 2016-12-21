@@ -59,7 +59,7 @@
             container.Register<Logic.CQ.UpdateProduct.Interfaces.IRepository, Logic.CQ.UpdateProduct.Repository>(lifeStyle);
         }
 
-        private static IImmutableList<Assembly> GetAssemblies()
+        private static ImmutableList<Assembly> GetAssemblies()
         {
             return new List<Assembly> { typeof(AutoMapperConfiguration).GetTypeInfo().Assembly }.ToImmutableList();
         }

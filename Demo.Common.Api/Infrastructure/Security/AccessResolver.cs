@@ -13,7 +13,7 @@
             _accessConfigurationMapProvider = accessConfigurationMapProvider;
         }
 
-        public bool CanAccess(NonEmptyLowerCaseString resourceWithAction, bool isAuthenticated, IImmutableList<NonEmptyLowerCaseString> scopes)
+        public bool CanAccess(NonEmptyLowerCaseString resourceWithAction, bool isAuthenticated, ImmutableList<NonEmptyLowerCaseString> scopes)
         {
             var accessConfigurationMap = _accessConfigurationMapProvider.Get();
 

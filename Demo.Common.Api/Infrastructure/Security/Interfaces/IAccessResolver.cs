@@ -5,6 +5,6 @@
 
     public interface IAccessResolver
     {
-        bool CanAccess(NonEmptyLowerCaseString resourceWithAction, bool isAuthenticated, IImmutableList<NonEmptyLowerCaseString> roles);
+        bool CanAccess(NonEmptyLowerCaseString resourceWithAction, bool isAuthenticated, ImmutableList<NonEmptyLowerCaseString> roles);
     }
 }
