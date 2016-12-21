@@ -1,6 +1,6 @@
 ﻿namespace Demo.Common.Api.Infrastructure.Security
 {
-    using System.Collections.Generic;
+    using System.Collections.Immutable;
     using Demo.Common.Api.Infrastructure.Security.Interfaces;
     using Demo.Types;
 
@@ -13,7 +13,7 @@
             _accessConfigurationMapProvider = accessConfigurationMapProvider;
         }
 
-        public bool CanAccess(NonEmptyLowerCaseString resourceWithAction, bool isAuthenticated, IReadOnlyCollection<NonEmptyLowerCaseString> scopes)
+        public bool CanAccess(NonEmptyLowerCaseString resourceWithAction, bool isAuthenticated, IImmutableList<NonEmptyLowerCaseString> scopes)
         {
             var accessConfigurationMap = _accessConfigurationMapProvider.Get();
 

@@ -59,7 +59,7 @@
             container.Register<Logic.CQ.UpdateProduct.Interfaces.IRepository, Logic.CQ.UpdateProduct.Repository>(lifeStyle);
         }
 
-        private static IReadOnlyCollection<Assembly> GetAssemblies()
+        private static IImmutableList<Assembly> GetAssemblies()
         {
             return new List<Assembly> { typeof(AutoMapperConfiguration).GetTypeInfo().Assembly }.ToImmutableList();
         }

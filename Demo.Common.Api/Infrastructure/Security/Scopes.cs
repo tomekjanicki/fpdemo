@@ -8,7 +8,7 @@ namespace Demo.Common.Api.Infrastructure.Security
 
     public sealed class Scopes : ValueObject<Scopes>
     {
-        private Scopes(bool anonymous, IReadOnlyCollection<NonEmptyLowerCaseString> scopeCollection)
+        private Scopes(bool anonymous, IImmutableList<NonEmptyLowerCaseString> scopeCollection)
         {
             Anonymous = anonymous;
             ScopeCollection = scopeCollection;
@@ -16,7 +16,7 @@ namespace Demo.Common.Api.Infrastructure.Security
 
         public bool Anonymous { get; }
 
-        public IReadOnlyCollection<NonEmptyLowerCaseString> ScopeCollection { get; }
+        public IImmutableList<NonEmptyLowerCaseString> ScopeCollection { get; }
 
         public static Scopes CreateAnonymous()
         {
@@ -28,12 +28,12 @@ namespace Demo.Common.Api.Infrastructure.Security
             return new Scopes(false, new List<NonEmptyLowerCaseString> { scope }.ToImmutableList());
         }
 
-        public static IResult<Scopes, NonEmptyString> CreateScopesOnly(IReadOnlyCollection<NonEmptyLowerCaseString> scopes)
+        public static IResult<Scopes, NonEmptyString> CreateScopesOnly(IImmutableList<NonEmptyLowerCaseString> scopes)
         {
             return scopes.Count == 0 ? GetFailResult((NonEmptyString)(nameof(ScopeCollection) + " cannot be empty list")) : GetOkResult(new Scopes(false, scopes.Distinct().OrderBy(s => s.Value).ToImmutableList()));
         }
 
-        public bool ContainScopes(IReadOnlyCollection<NonEmptyLowerCaseString> scopes)
+        public bool ContainScopes(IImmutableList<NonEmptyLowerCaseString> scopes)
         {
             return scopes.Any(scope => ScopeCollection.Contains(scope));
         }

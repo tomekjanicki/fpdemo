@@ -1,7 +1,7 @@
 ﻿namespace Demo.Types.FunctionalExtensions
 {
     using System;
-    using System.Collections.Generic;
+    using System.Collections.Immutable;
     using System.Linq;
 
     public abstract class ValueObject<T> : IEquatable<T>
@@ -70,7 +70,7 @@
 
         protected abstract int GetHashCodeCore();
 
-        protected int GetCalculatedHashCode(IReadOnlyCollection<object> list)
+        protected int GetCalculatedHashCode(IImmutableList<object> list)
         {
             return list.Aggregate(13, (current, i) => current * 7 + i.GetHashCode());
         }
