@@ -3,6 +3,8 @@
     using System.Linq;
     using System.Net.Http.Formatting;
     using System.Web.Http;
+    using System.Web.Http.ModelBinding;
+    using Demo.Common.Api.Infrastructure;
     using Newtonsoft.Json.Converters;
     using Newtonsoft.Json.Serialization;
     using Thinktecture.IdentityModel.WebApi;
@@ -14,6 +16,8 @@
             configuration.Formatters.Clear();
             configuration.Formatters.Add(GetConfiguredJsonMediaTypeFormatter());
             configuration.Filters.Add(new ResourceActionAuthorizeAttribute());
+
+            configuration.Services.Insert(typeof(ModelBinderProvider), 0, new ImmutableListModelBinderProvider());
         }
 
         private static JsonMediaTypeFormatter GetConfiguredJsonMediaTypeFormatter()
