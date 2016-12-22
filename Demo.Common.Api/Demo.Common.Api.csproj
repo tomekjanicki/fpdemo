@@ -64,6 +64,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Infrastructure\BaseWebApiController.cs" />
+    <Compile Include="Infrastructure\ImmutableListModelBinder.cs" />
     <Compile Include="Infrastructure\Security\AccessResolver.cs" />
     <Compile Include="Infrastructure\Security\AuthorizationManager.cs" />
     <Compile Include="Infrastructure\Security\Interfaces\IAccessConfigurationMapProvider.cs" />

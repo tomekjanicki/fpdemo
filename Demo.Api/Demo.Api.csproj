@@ -162,6 +162,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Apis\ProductController.cs" />
+    <Compile Include="Apis\Test1Controller.cs" />
+    <Compile Include="Apis\Test2Controller.cs" />
+    <Compile Include="Apis\Test3Controller.cs" />
     <Compile Include="Apis\VersionController.cs" />
     <Compile Include="App_Start\RegisterContainer.cs" />
     <Compile Include="App_Start\RegisterSwagger.cs" />

@@ -19,7 +19,10 @@ namespace Demo.Api.Infrastructure.Security
             Dictionary = new Dictionary<NonEmptyLowerCaseString, Scopes>
             {
                 { (NonEmptyLowerCaseString)"product/put", writeScopeOnly },
-                { (NonEmptyLowerCaseString)"version/get", anonymous }
+                { (NonEmptyLowerCaseString)"version/get", anonymous },
+                { (NonEmptyLowerCaseString)"test1/get", anonymous },
+                { (NonEmptyLowerCaseString)"test2/post", anonymous },
+                { (NonEmptyLowerCaseString)"test3/post", anonymous }
             }.ToImmutableDictionary();
         }
 

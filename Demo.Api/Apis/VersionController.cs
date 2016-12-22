@@ -8,7 +8,7 @@
     using Swashbuckle.Swagger.Annotations;
 
     [SwaggerResponseRemoveDefaults]
-    public class VersionController : BaseWebApiController
+    public sealed class VersionController : BaseWebApiController
     {
         [SwaggerResponse(HttpStatusCode.OK, null, typeof(string))]
         public IHttpActionResult Get()
