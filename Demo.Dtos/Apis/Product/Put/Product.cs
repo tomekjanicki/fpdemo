@@ -2,8 +2,14 @@
 {
     public class Product
     {
-        public string Name { get; set; }
+        public Product(string name, int? size)
+        {
+            Name = name;
+            Size = size;
+        }
 
-        public int? Size { get; set; }
+        public string Name { get; }
+
+        public int? Size { get; }
     }
 }

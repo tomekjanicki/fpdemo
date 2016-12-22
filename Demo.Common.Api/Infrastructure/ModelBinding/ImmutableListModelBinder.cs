@@ -1,4 +1,4 @@
-namespace Demo.Common.Api.Infrastructure
+namespace Demo.Common.Api.Infrastructure.ModelBinding
 {
     using System.Collections.Generic;
     using System.Collections.Immutable;

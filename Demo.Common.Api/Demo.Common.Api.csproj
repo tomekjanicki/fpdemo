@@ -68,8 +68,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Infrastructure\BaseWebApiController.cs" />
-    <Compile Include="Infrastructure\ImmutableListModelBinder.cs" />
-    <Compile Include="Infrastructure\ImmutableListModelBinderProvider.cs" />
+    <Compile Include="Infrastructure\ModelBinding\ImmutableListModelBinder.cs" />
+    <Compile Include="Infrastructure\ModelBinding\ImmutableListModelBinderProvider.cs" />
     <Compile Include="Infrastructure\Security\AccessResolver.cs" />
     <Compile Include="Infrastructure\Security\AuthorizationManager.cs" />
     <Compile Include="Infrastructure\Security\Interfaces\IAccessConfigurationMapProvider.cs" />

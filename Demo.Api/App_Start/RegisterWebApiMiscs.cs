@@ -4,7 +4,7 @@
     using System.Net.Http.Formatting;
     using System.Web.Http;
     using System.Web.Http.ModelBinding;
-    using Demo.Common.Api.Infrastructure;
+    using Demo.Common.Api.Infrastructure.ModelBinding;
     using Newtonsoft.Json.Converters;
     using Newtonsoft.Json.Serialization;
     using Thinktecture.IdentityModel.WebApi;
