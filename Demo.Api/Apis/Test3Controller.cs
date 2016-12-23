@@ -28,15 +28,15 @@ namespace Demo.Api.Apis
 
         public sealed class Item
         {
-            public Item(int id1, int id2)
+            public Item(int? id1, int? id2)
             {
                 Id1 = id1;
                 Id2 = id2;
             }
 
-            public int Id1 { get; }
+            public int? Id1 { get; }
 
-            public int Id2 { get; }
+            public int? Id2 { get; }
         }
     }
 }

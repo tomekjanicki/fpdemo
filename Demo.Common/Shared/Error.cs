@@ -5,7 +5,7 @@
     using Demo.Types;
     using Demo.Types.FunctionalExtensions;
 
-    public class Error : ValueObject<Error>
+    public sealed class Error : ValueObject<Error>
     {
         private readonly string _message;
 
