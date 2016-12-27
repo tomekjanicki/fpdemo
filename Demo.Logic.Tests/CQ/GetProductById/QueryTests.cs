@@ -9,14 +9,14 @@
         [Test]
         public void ValidParameters_ShouldPass()
         {
-            var queryResult = Query.Create(1);
+            var queryResult = Query.TryCreate(1);
             queryResult.IsSuccess.ShouldBeTrue();
         }
 
         [Test]
         public void InvalidId_ShouldFail()
         {
-            var queryResult = Query.Create(-1);
+            var queryResult = Query.TryCreate(-1);
             queryResult.IsFailure.ShouldBeTrue();
         }
     }

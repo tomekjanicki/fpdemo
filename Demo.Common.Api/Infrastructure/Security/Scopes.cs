@@ -28,7 +28,7 @@ namespace Demo.Common.Api.Infrastructure.Security
             return new Scopes(false, new List<NonEmptyLowerCaseString> { scope }.ToImmutableList());
         }
 
-        public static IResult<Scopes, NonEmptyString> CreateScopesOnly(ImmutableList<NonEmptyLowerCaseString> scopes)
+        public static IResult<Scopes, NonEmptyString> TryCreateScopesOnly(ImmutableList<NonEmptyLowerCaseString> scopes)
         {
             return scopes.Count == 0 ? GetFailResult((NonEmptyString)(nameof(ScopeCollection) + " cannot be empty list")) : GetOkResult(new Scopes(false, scopes.Distinct().OrderBy(s => s.Value).ToImmutableList()));
         }

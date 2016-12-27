@@ -22,11 +22,11 @@
 
         public PositiveInt Size { get; }
 
-        public static IResult<Command, NonEmptyString> Create(int id, string name, int? size)
+        public static IResult<Command, NonEmptyString> TryCreate(int id, string name, int? size)
         {
-            var idResult = PositiveInt.Create(id, (NonEmptyString)nameof(Id));
-            var nameResult = Name.Create(name, (NonEmptyString)nameof(Name));
-            var sizeResult = PositiveInt.Create(size, (NonEmptyString)nameof(Size));
+            var idResult = PositiveInt.TryCreate(id, (NonEmptyString)nameof(Id));
+            var nameResult = Name.TryCreate(name, (NonEmptyString)nameof(Name));
+            var sizeResult = PositiveInt.TryCreate(size, (NonEmptyString)nameof(Size));
 
             var result = new IResult<NonEmptyString>[]
             {

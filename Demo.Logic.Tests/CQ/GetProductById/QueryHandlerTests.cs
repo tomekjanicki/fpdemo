@@ -51,7 +51,7 @@
 
         private static Query GetValidQuery()
         {
-            var queryResult = Query.Create(1);
+            var queryResult = Query.TryCreate(1);
             queryResult.EnsureIsNotFaliure();
             return queryResult.Value;
         }

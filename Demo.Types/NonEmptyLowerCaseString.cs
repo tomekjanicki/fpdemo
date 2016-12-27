@@ -11,7 +11,7 @@
 
         public static explicit operator NonEmptyLowerCaseString(string value)
         {
-            return GetValueWhenSuccessOrThrowInvalidCastException(() => Create(value, (NonEmptyString)"Value"));
+            return GetValueWhenSuccessOrThrowInvalidCastException(() => TryCreate(value, (NonEmptyString)"Value"));
         }
 
         public static implicit operator string(NonEmptyLowerCaseString value)
@@ -21,12 +21,12 @@
 
         public static implicit operator NonEmptyString(NonEmptyLowerCaseString value)
         {
-            return GetValueWhenSuccessOrThrowInvalidCastException(() => NonEmptyString.Create(value, (NonEmptyString)"Value"));
+            return GetValueWhenSuccessOrThrowInvalidCastException(() => NonEmptyString.TryCreate(value, (NonEmptyString)"Value"));
         }
 
-        public static IResult<NonEmptyLowerCaseString, NonEmptyString> Create(string value, NonEmptyString field)
+        public static IResult<NonEmptyLowerCaseString, NonEmptyString> TryCreate(string value, NonEmptyString field)
         {
-            return CreateInt(value, (NonEmptyString)(field + "can't be empty"), s => s != string.Empty, s => new NonEmptyLowerCaseString(s.ToLower()));
+            return TryCreateInt(value, (NonEmptyString)(field + "can't be empty"), s => s != string.Empty, s => new NonEmptyLowerCaseString(s.ToLower()));
         }
     }
 }
