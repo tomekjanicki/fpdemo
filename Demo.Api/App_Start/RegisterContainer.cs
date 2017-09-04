@@ -11,6 +11,7 @@
     using Demo.Logic.Facades.Apis;
     using SimpleInjector;
     using SimpleInjector.Integration.WebApi;
+    using SimpleInjector.Lifestyles;
 
     public static class RegisterContainer
     {
@@ -18,7 +19,7 @@
         {
             var container = new Container();
 
-            container.Options.DefaultScopedLifestyle = new WebApiRequestLifestyle();
+            container.Options.DefaultScopedLifestyle = new AsyncScopedLifestyle();
 
             container.RegisterWebApiControllers(configuration);
 
