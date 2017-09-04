@@ -14,9 +14,9 @@
 
         public PositiveInt Id { get; }
 
-        public static IResult<Query, NonEmptyString> Create(int id)
+        public static IResult<Query, NonEmptyString> TryCreate(int id)
         {
-            var result = PositiveInt.Create(id, (NonEmptyString)nameof(Id));
+            var result = PositiveInt.TryCreate(id, (NonEmptyString)nameof(Id));
             return result.OnSuccess(positiveIntId => GetOkResult(new Query(positiveIntId)));
         }
 

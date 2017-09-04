@@ -12,7 +12,7 @@
 
         public static explicit operator Name(string value)
         {
-            return GetValueWhenSuccessOrThrowInvalidCastException(() => Create(value, (NonEmptyString)"Value"));
+            return GetValueWhenSuccessOrThrowInvalidCastException(() => TryCreate(value, (NonEmptyString)"Value"));
         }
 
         public static implicit operator string(Name name)
@@ -22,10 +22,10 @@
 
         public static implicit operator NonEmptyString(Name value)
         {
-            return GetValueWhenSuccessOrThrowInvalidCastException(() => NonEmptyString.Create(value, (NonEmptyString)"Value"));
+            return GetValueWhenSuccessOrThrowInvalidCastException(() => NonEmptyString.TryCreate(value, (NonEmptyString)"Value"));
         }
 
-        public static IResult<Name, NonEmptyString> Create(string name, NonEmptyString field)
+        public static IResult<Name, NonEmptyString> TryCreate(string name, NonEmptyString field)
         {
             if (name == string.Empty)
             {

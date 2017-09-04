@@ -19,7 +19,7 @@
 
         public IResult<Error> Put(int id, Product product)
         {
-            var commandResult = Command.Create(id, product.Name.IfNullReplaceWithEmptyString(), product.Size);
+            var commandResult = Command.TryCreate(id, product.Name.IfNullReplaceWithEmptyString(), product.Size);
 
             return Helper.Put(_mediator, commandResult);
         }

@@ -20,7 +20,7 @@
 
         public IResult<Dtos.Apis.Product.Get.Product, Error> Get(int id)
         {
-            var queryResult = Query.Create(id);
+            var queryResult = Query.TryCreate(id);
 
             return Helper.GetItem<Dtos.Apis.Product.Get.Product, Query, Product>(_mediator, _mapper, queryResult);
         }
