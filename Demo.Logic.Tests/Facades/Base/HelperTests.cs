@@ -109,6 +109,8 @@
         {
             const string value = "value";
 
+            _mediator.Send(Arg.Any<IRequest<IResult<NonEmptyString, Error>>>()).Returns(Result<NonEmptyString, Error>.Ok((NonEmptyString)value));
+
             _mapper.Map<string>(Arg.Any<NonEmptyString>()).Returns(value);
 
             var result = Helper.GetItem<string, IRequest<IResult<NonEmptyString, Error>>, NonEmptyString>(_mediator, _mapper, _getItemQueryResult);
