@@ -1,6 +1,7 @@
 ﻿namespace Demo.Common.Shared
 {
     using System;
+    using System.Collections.Immutable;
     using Demo.Types;
     using Demo.Types.FunctionalExtensions;
 
@@ -46,7 +47,7 @@
 
         protected override int GetHashCodeCore()
         {
-            return GetCalculatedHashCode(new object[] { ErrorType, _message });
+            return GetCalculatedHashCode(new object[] { ErrorType, _message }.ToImmutableList());
         }
     }
 }

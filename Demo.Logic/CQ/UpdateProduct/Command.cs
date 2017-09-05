@@ -1,5 +1,6 @@
 ﻿namespace Demo.Logic.CQ.UpdateProduct
 {
+    using System.Collections.Immutable;
     using Demo.Common.Handlers.Interfaces;
     using Demo.Common.Shared;
     using Demo.Logic.CQ.ValueObjects;
@@ -44,7 +45,7 @@
 
         protected override int GetHashCodeCore()
         {
-            return GetCalculatedHashCode(new object[] { Id, Name });
+            return GetCalculatedHashCode(new object[] { Id, Name }.ToImmutableList());
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿namespace Demo.Types.FunctionalExtensions
 {
     using System;
+    using System.Collections.Immutable;
     using System.Linq;
 
     public static class ResultExtensions
@@ -32,14 +33,14 @@
 
         public static IResult<NonEmptyString> IfAtLeastOneFailCombineElseReturnOk(this IResult<NonEmptyString>[] results)
         {
-            var failedResults = results.Where(result => result.IsFailure).ToList();
+            var failedResults = results.Where(result => result.IsFailure).ToImmutableList();
 
             if (!failedResults.Any())
             {
                 return GetOkMessage();
             }
 
-            var errorMessage = (NonEmptyString)string.Join("; ", failedResults.Select(result => result.Error.Value).ToArray());
+            var errorMessage = (NonEmptyString)string.Join("; ", failedResults.Select(result => result.Error.Value).ToImmutableArray());
 
             return errorMessage.GetFailResult();
         }

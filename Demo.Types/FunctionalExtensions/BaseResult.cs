@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Collections.Immutable;
     using NullGuard;
 
     public abstract class BaseResult<TResult, TError> : ValueObject<BaseResult<TResult, TError>>, IResult<TError>
@@ -68,7 +69,7 @@
                 result.Add(Error);
             }
 
-            return GetCalculatedHashCode(result);
+            return GetCalculatedHashCode(result.ToImmutableList());
         }
     }
 }
